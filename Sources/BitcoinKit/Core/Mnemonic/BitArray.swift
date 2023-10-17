@@ -62,6 +62,10 @@ public struct BitArray: Hashable, RangeReplaceableCollection {
 
         self = viaBitstring
     }
+    
+    public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C : Collection, Bool == C.Element {
+        bits.replaceSubrange(subrange, with: newElements)
+    }
 
     /// A non-optimized initializer taking a binary String, if the string passed contains any other characters than '0' or '1' then the init will fail (return nil)
     public init?<S>(binaryString: S) where S: StringProtocol {
